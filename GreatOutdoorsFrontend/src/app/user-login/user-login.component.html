@@ -1,0 +1,33 @@
+<div class="col-md-6"  style="width: 500px; display: block;margin: auto;border-color: black;border-style: solid;border-width: 1px;border-radius: 10px; padding-top: 20px;margin-top: 20px;">
+<form (ngSubmit)="onFormSubmit()" #loginForm="ngForm">
+
+  <div style="margin-top: 15px;">
+  <input type="text" placeholder="Username" id="" name="username" required [(ngModel)]="username" class="form-control" #user="ngModel">
+</div>
+<div class="alert alert-danger" *ngIf="user.touched && user.errors?.required">username is required</div>
+
+
+
+<div style="margin-top: 15px;">
+  <input type="password" placeholder="Password" id="name" name="password" required [(ngModel)]="password" class="form-control" #pwd="ngModel">
+</div>
+<div class="alert alert-danger" *ngIf="pwd.touched && pwd.errors?.required">Password is required</div>
+
+<div style="margin-top: 15px;">
+  <tr>
+    <input type="submit" value="login" class="btn btn-success" style="margin-bottom: 20px;" [disabled]="!loginForm.form.valid">
+    <span style="margin-left: 10px;">Do not have account? <a style="color: deepskyblue;" routerLink="/user/newUser">Register now</a></span>
+  </tr>
+</div>
+
+</form>
+ 
+</div>
+
+
+
+<!-- []--property binding => component to html
+     ()--event binding => html to component
+     [()]--event + attribute => 2 way binding --->
+
+

@@ -1,0 +1,23 @@
+<table class="table table-stripped" style="margin-top:50px;">
+  <thead class="thead-dark">
+    <tr>
+      <th>User Id</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Role</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  
+  <tr *ngFor="let user of allUsers;let i=index">
+    <td>{{user.userId}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.password}}</td>
+    <td>{{user.role}}</td>
+    <td>{{user.phoneNumber}}</td>
+    <td>{{user.email}}</td>
+    <td><button class="btn btn-danger" (click)="deleteUser(allUsers[i],i)">Delete</button> <button class="btn btn-primary">Update</button></td>
+  </tr>
+</table>

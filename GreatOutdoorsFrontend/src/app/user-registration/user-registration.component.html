@@ -1,0 +1,62 @@
+<div>
+  <div class="col-md-6"  style="width: 500px; display: block;margin: auto;border-color: black;border-style: solid;border-width: 1px;padding-top: 20px;margin-top: 20px;">
+    <h2 class="text-center">User registration</h2>
+  <form id="registerForm"  (ngSubmit)="create()" #registrationForm="ngForm">
+  
+    <div style="margin-top: 15px;">
+    <input type="text" placeholder="Username" id="" name="username" required pattern="[a-z]{1,}[a-z0-9]*" [(ngModel)]="user.username"  #userName="ngModel" class="form-control" >
+    </div>
+    <div class="alert alert-danger" *ngIf="userName.touched && userName.errors?.required">Username is required</div>
+    <div class="alert alert-danger" *ngIf="userName.errors?.pattern">username must contain only small letters and digits. It must start with a small letter</div>
+  
+  <div style="margin-top: 15px;">
+    <input type="password" placeholder="Password" id="password" name="password" required pattern="[A-Za-z0-9#@_.]{8,15}" [(ngModel)]="user.password" #pwd="ngModel" class="form-control" >
+  </div>
+  <div class="alert alert-danger" *ngIf="pwd.touched && pwd.errors?.required">Password is required</div>
+  <div class="alert alert-danger" *ngIf="pwd.errors?.pattern">Password must be alphanumeric only and it may contain special characters like @ _ . # only. Password length should be between 8 to 15 characters.</div>
+
+  <div style="margin-top: 15px;">
+    <input type="password" placeholder="Confirm Password" id="confirmPassword" name="conformPassword" required #cnfPwd="ngModel" [(ngModel)]="cnfPassword" class="form-control" >
+  </div>
+  <div class="alert alert-danger" *ngIf="cnfPwd.touched && pwd.errors?.required">Confirm password is required</div>
+  <div class="alert alert-danger" *ngIf="user.password!=cnfPassword && cnfPwd.touched">Both password must be same.</div>
+
+  
+  <div style="margin-top: 15px;">
+    <select id="role" name="role" [(ngModel)]="user.role" required #role="ngModel" class="form-control">
+      <option value="none" disabled selected>---select role---</option>
+      <option value="retailer">Retailer</option>
+    </select>
+  </div>
+  <div class="alert alert-danger" *ngIf="role.errors?.required && role.touched">Role is required</div>
+  
+  <div style="margin-top: 15px;">
+    <input type="email" placeholder="email" id="email" name="email" required pattern="[a-z_.]+@[a-z]+[.]{1,}[a-z]+" [(ngModel)]="user.email" #email="ngModel"  class="form-control" >
+  </div>
+  <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">Email is required</div>
+  <div class="alert alert-danger" *ngIf="email.errors?.pattern">Invalid email. Email format should be like "Your_email@domain"</div>
+  
+  <div style="margin-top: 15px;">
+    <input type="tel" placeholder="Phone number" id="phoneNumber" name="phoneNumber" required pattern="[6-9]{1}\d{9}" [(ngModel)]="user.phoneNumber" #phone="ngModel" class="form-control" >
+  </div>
+  <div class="alert alert-danger" *ngIf="phone.touched && phone.errors?.required">Phone number is required</div>
+  <div class="alert alert-danger" *ngIf="phone.errors?.pattern">Phone number must contain 10 digits and must not begin with zero.</div>
+  
+  <div style="margin-top: 15px;">
+    <tr>
+      <input type="submit" value="Create account" class="btn btn-success" style="margin-bottom: 20px;" [disabled]="!registrationForm.form.valid">
+      <span style="margin-left: 10px;">Already have account? <a style="color: deepskyblue;" routerLink="/user/login">Sign In</a></span>
+    </tr>
+ </div>
+  </form>
+   
+  </div>
+  
+</div>
+
+
+
+<!-- []--property binding => component to html
+     ()--event binding => html to component
+     [()]--event + attribute => 2 way binding --->
+
