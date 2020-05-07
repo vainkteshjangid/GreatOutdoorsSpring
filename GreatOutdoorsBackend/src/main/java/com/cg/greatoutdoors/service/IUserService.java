@@ -11,11 +11,7 @@ public interface IUserService {
 	public void create(UserDTO user);
 	
 	public UserDTO getUserByUsername(String username);
-	
-	public boolean logout();
-
-	public void changePassword(UserDTO user);
-	
+		
 	public List<UserDTO> reterive();
 
 	public UserDTO getUserById(Long id);

@@ -14,16 +14,20 @@
   </tr>
 </table>
 
-<div style="display: flex;padding-top: 25px;padding-bottom: 25px;" *ngFor="let data of cartData">
-  <div style="background-color: orange;width: 100px;height: 120px;vertical-align: middle;text-align: center;">
-   <img href="" width="80px" height="100px" style="margin-top: 10px;"/>
-  </div>
-  <div style="background-color: orchid;width: 500px;height: 120px;">
-    <div style="display: flex;"><a href style="margin-left: 25px;">{{data.productName}}</a><label style="margin-left: auto;margin-right: 100px;color: brown;">{{data.price}} : </label></div>
-    <label style="margin-left: 25px;">Qty : </label><input type="number" value="1" style="width: 100px;"/>
-    <div style="margin-left: 25px;display: flex;">
-      <label style="font-size: small;">Color : {{data.color}}</label><button class="btn btn-danger btn-sm" style="margin-left: auto;margin-right: 90px;">Delete</button>
+<!-- <div *ngFor='let data of cartData'>
+  {{data.productName}}
+  <div style="display: flex;padding-top: 25px;padding-bottom: 25px;">
+    <div style="background-color: orange;width: 100px;height: 120px;vertical-align: middle;text-align: center;">
+     <img href="" width="80px" height="100px" style="margin-top: 10px;"/>
     </div>
-    <div style="margin-left: 25px;font-size: small;">Manufacturer : {{data.manufacturer}}</div>
+    <div style="background-color: orchid;width: 500px;height: 120px;">
+      <div style="display: flex;"><a href style="margin-left: 25px;">{{data.productName}}</a><label style="margin-left: auto;margin-right: 100px;color: brown;">{{data.price}} : </label></div>
+      <label style="margin-left: 25px;">Qty : </label><input type="number" value="1" style="width: 100px;"/>
+      <div style="margin-left: 25px;display: flex;">
+        <label style="font-size: small;">Color : {{data.color}}</label><button class="btn btn-danger btn-sm" style="margin-left: auto;margin-right: 90px;">Delete</button>
+      </div>
+      <div style="margin-left: 25px;font-size: small;">Manufacturer : {{data.manufacturer}}</div>
+    </div>
   </div>
-</div>
+</div> -->
+

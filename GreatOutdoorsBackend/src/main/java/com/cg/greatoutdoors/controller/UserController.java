@@ -31,6 +31,14 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 	
+/*********************************************************************************************************
+     *Method:                  - createUser
+     *description:             - handle httpRequest for creating new user in database               - 
+     *@returns                 - ResponseEntity
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@PostMapping(value="user/newUser",consumes="application/json")
 	public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO user) {
 		try {
@@ -46,6 +54,14 @@ public class UserController {
 	}
 	
 	
+/*********************************************************************************************************
+     *Method:                  - deleteUser
+     *description:             - handle httpRequest for deleting user by userId from database              - 
+     *@returns                 - ResponseEntity
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@DeleteMapping(value="user/deleteUser/{userId}")
 	public ResponseEntity<?> deleteUser(@PathVariable("userId") @RequestParam Long userId) {
 		userService.delete(userId);
@@ -53,6 +69,14 @@ public class UserController {
 	}
 	
 	
+/*********************************************************************************************************
+     *Method:                  - getUserById
+     *description:             - handle httpRequest for fetching user data from database with given userId              - 
+     *@returns                 - user with matched id
+     *@throws  RecordNotFoundException - thrown if user is not found in the db
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@GetMapping(value="user/{userId}")
 	public ResponseEntity<UserDTO> getUserById(@PathVariable("userId") @RequestParam Long userId){
 		UserDTO user=userService.getUserById(userId);
@@ -64,6 +88,14 @@ public class UserController {
 	}
 	
 	
+/*********************************************************************************************************
+     *Method:                  - getUserByUsername
+     *description:             - handle httpRequest to fetch user of given username from db            - 
+     *@returns                 - user with matched username
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@GetMapping(value="user/{username}")
 	public ResponseEntity<UserDTO> getUserByUsername(@PathVariable("username") @RequestParam String username){
 		
@@ -79,6 +111,14 @@ public class UserController {
 	}
 	
 	
+/*********************************************************************************************************
+     *Method:                  - loginUser
+     *description:             - handle httpRequest for login and checks verify username and password             - 
+     *@returns                 - user data matching given credentials
+     *@throws                  - RecordNotFoundException and WrongPasswordException
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@GetMapping(value="user/login")
 	public ResponseEntity<?> loginUser(@RequestParam String username,@RequestParam String password) {
 		UserDTO user;
@@ -96,28 +136,18 @@ public class UserController {
 	}
 	
 	
+/*********************************************************************************************************
+     *Method:                  - viewAll
+     *description:             - handle httpRequest for fetching all user from the db              - 
+     *@returns                 - List of all users
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@GetMapping(value="user/viewAll",produces="application/json")
 	public List<UserDTO> viewAll(){
 		return userService.reterive();
 	}
-	
-	
-	
-	@PutMapping(value="user/logout")
-	public String logoutUser() {
-		userService.logout();
-		return "Logged out";
-	}
-	
-	
-	@PutMapping(value="user/updatePassword")
-	public String changePassword(@RequestBody UserDTO user) {
-		userService.changePassword(user);
-		return "Password changed";
-	}
-	
-	
-	
 	
 	
 }

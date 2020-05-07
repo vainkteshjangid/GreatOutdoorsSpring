@@ -16,8 +16,8 @@ export class CartService {
 
   getProductDetail(productId:number):Observable<any>{
    
-    let url=`http://localhost:1136/cart/${productId}`;
-    return this.http.get(url,{responseType:"json"});
+    let url='http://localhost:1136/cart/{productId}';
+    return this.http.get(url);
   }
   
 }

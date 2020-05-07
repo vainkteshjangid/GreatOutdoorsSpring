@@ -20,11 +20,27 @@ public class UserDaoImpl implements IUserDao{
 	@PersistenceContext
 	EntityManager em;
 	
+/*********************************************************************************************************
+     *Method:                  - create 
+     *description:             - create a new user in database               - 
+     *@returns                 - void
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override
 	public void create(UserDTO user) {
 		em.persist(user);
 	}
 	
+/*********************************************************************************************************
+     *Method:                  - isUsernameAvailable
+     *description:             - checks if username is already registered or not              - 
+     *@returns                 - true or false
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override 
 	public boolean isUsernameAvailable(String username) {
 		String str="SELECT user FROM UserDTO user WHERE user.username=:username";
@@ -38,6 +54,15 @@ public class UserDaoImpl implements IUserDao{
 		return false;
 	}
 
+	
+/*********************************************************************************************************
+     *Method:                  - delete
+     *description:             - delete user with given id from database               - 
+     *@returns                 - void
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override
 	public void delete(Long userId) {
 		String user_str="SELECT user FROM UserDTO user WHERE user.userId=:uid";
@@ -54,6 +79,15 @@ public class UserDaoImpl implements IUserDao{
 		em.remove(user);
 	}
 	
+	
+/*********************************************************************************************************
+     *Method:                  - getUserByUsername
+     *description:             - fetch user with given username from database             - 
+     *@returns                 - user with matching username
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override
 	public UserDTO getUserByUsername(String username) throws NoResultException{
 		String str="Select user FROM UserDTO user WHERE user.username=:username";
@@ -62,18 +96,15 @@ public class UserDaoImpl implements IUserDao{
 		return query.getSingleResult();
 	}
 
-	@Override
-	public boolean logout() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void changePassword(UserDTO user) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
+/*********************************************************************************************************
+     *Method:                  - reterive
+     *description:             - fetch all users from database             - 
+     *@returns                 - List of all users
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override
 	public List<UserDTO> reterive() {
 		// TODO Auto-generated method stub
@@ -82,6 +113,15 @@ public class UserDaoImpl implements IUserDao{
 		return query.getResultList();
 	}
 
+	
+/*********************************************************************************************************
+     *Method:                  - getUserById
+     *description:             - fetch user with given id from database              - 
+     *@returns                 - User with matching userId
+     *@throws                  - 
+     *created by               - Vainktesh Prasad Jangid
+     *created date             - 26/4/2020
+**********************************************************************************************************/
 	@Override
 	public UserDTO getUserById(Long id) {
 		UserDTO user = em.find(UserDTO.class, id);

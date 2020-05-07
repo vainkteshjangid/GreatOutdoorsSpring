@@ -32,17 +32,6 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public boolean logout() {
-		dao.logout();
-		return false;
-	}
-
-	@Override
-	public void changePassword(UserDTO user) {
-		dao.changePassword(user);
-	}
-
-	@Override
 	public List<UserDTO> reterive() {
 		// TODO Auto-generated method stub
 		return dao.reterive();

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams, HttpErrorResponse} from '@angular/common/http';
 import { Observable, from, throwError } from 'rxjs';
-import { User } from './user';
+import { User } from '../assets/user';
 import {catchError} from 'rxjs/operators';
 import { SessionService } from './session.service';
 

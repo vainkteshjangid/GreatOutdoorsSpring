@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { Product } from '../Product';
+import { Product } from '../../assets/Product';
+import { Cart } from '../../assets/Cart';
 
 @Component({
   selector: 'app-cart',
@@ -8,19 +9,16 @@ import { Product } from '../Product';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  products:Product[];
-  cartData:Product[]=[];
+   products:Array<Cart>=[];
+  cartData:Array<Product>=[];
   tempProduct:Product;
 
   constructor(private cartService:CartService) {
     this.getAllProducts();
-    for(let product of this.products){
-        this.getProductDetail(product.productId);
-    };
-
    }
 
   ngOnInit() {
+    
   }
 
   getAllProducts():void{
@@ -31,18 +29,6 @@ export class CartComponent implements OnInit {
       error=>
       {
         console.log("Error occured",error);
-      });
-  }
-
-  getProductDetail(productId:number):void{
-    this.cartService.getProductDetail(productId).subscribe(data=>
-      {
-          this.tempProduct=data;
-          this.cartData.push(this.tempProduct);
-      },
-      error=>
-      {
-        console.log("Error occured:"+error);
       });
   }
 

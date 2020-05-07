@@ -15,10 +15,6 @@ public interface IUserDao{
 	
 	public void create(UserDTO user);
 	
-	public boolean logout();
-
-	public void changePassword(UserDTO user);
-
 	public List<UserDTO> reterive();
 
 	public UserDTO getUserById(Long id);
