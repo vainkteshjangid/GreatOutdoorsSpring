@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../assets/user';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs';
+import { SessionService } from '../session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -11,11 +13,17 @@ import { Observable } from 'rxjs';
 export class UserListComponent implements OnInit {
 
   allUsers=[];
-  constructor(private userService:UserService) { 
+  constructor(private userService:UserService,private router:Router) { 
     this.getAllUser();
   }
 
   ngOnInit() {
+    if(SessionService.loginStatus && SessionService.activeUser.role=="Admin"){
+        
+    }
+    else {
+      this.router.navigateByUrl('#');
+    }
   }
 
   getAllUser():void{

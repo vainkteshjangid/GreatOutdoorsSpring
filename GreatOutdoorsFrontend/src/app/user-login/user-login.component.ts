@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { SessionService } from '../session.service';
-import { User } from '../user';
+import { User } from '../../assets/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
